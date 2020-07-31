@@ -1,0 +1,27 @@
+---
+# copy C* from local machine
+CASSANDRA_SRC_FILE_PATH: /opt/
+
+# copy and extract cassandra to this diroctory
+CASSANDRA_DEST_DIR: /opt/
+
+
+KEYSPACE_NAME: keyspace_test
+CLUSTER_NAME: cluster_test
+DC_NAME: dc1
+TOKEN_NUMBER: 32 
+SYSTEM_KEYSPACSE_REPLICA: 3
+MAX_HEAP_SIZE: 8G
+HEAP_NEWSIZE: 200M
+
+
+# data paths
+DATA_PATH: /mnt/cassandra/data
+COMMITLOG_PATH: /mnt/cassandra/commitlog
+HINTS_PATH: /mnt/cassandra/hints
+SAVED_CACHES_PATH: /mnt/cassandra/saved_caches
+
+
+
+SYSTEM_KEYSPACSE_REPLICA: 3
+KEYSPACE_REPLICA: 2

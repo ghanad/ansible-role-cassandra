@@ -1,0 +1,20 @@
+---
+- name: copy .cql file to host
+  template: src=cql_commands.cql.j2 dest=/root/cql_commands.cql
+  when: 
+  - port_status_9042.failed == true
+  - inventory_hostname == groups['cluster'][0]
+
+
+- name: execute cql file
+  shell: cqlsh -f cql_commands.cql {{inventory_hostname}}
+  when: 
+  - port_status_9042.failed == true
+  - inventory_hostname == groups['cluster'][0]
+
+
+- name: remove cql_commands file
+  file: path=/root/cql_commands.cql state=absent
+  when: 
+  - port_status_9042.failed == true
+  - inventory_hostname == groups['cluster'][0]

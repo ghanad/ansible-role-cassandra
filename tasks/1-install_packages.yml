@@ -1,0 +1,6 @@
+---
+# install packages
+- name: install pakages
+  apt:
+    name: ['libjna-java', 'libjemalloc1', 'sysfsutils']
+    state: present    

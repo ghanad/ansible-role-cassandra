@@ -1,0 +1,15 @@
+---
+- name: check port 9042
+  wait_for: host={{ inventory_hostname }} port=9042 timeout=3
+  ignore_errors: yes
+  register: port_status_9042
+
+
+- name: start cassandra.service - {{ansible_date_time.time}}
+  systemd: name=cassandra.service enabled=yes daemon_reload=yes state=started
+  when: port_status_9042.failed == True
+
+
+- name: check port 9042 - {{ansible_date_time.time}}
+  local_action: wait_for host={{ inventory_hostname }} port=9042 timeout=300
+  when: port_status_9042.failed == True

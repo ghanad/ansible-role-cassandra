@@ -1,0 +1,21 @@
+---
+- name: hugepage issue
+  shell: echo never | tee /sys/kernel/mm/transparent_hugepage/defrag
+
+- name: hugepage edit sysfs.conf
+  template: src=sysfs.conf.j2 dest=/etc/sysfs.conf
+
+- name: copy sysctl.conf
+  copy: src=sysctl.conf dest=/etc/sysctl.conf 
+
+# remove fstab
+- name: Delete swap in /etc/fstab
+  lineinfile: dest=/etc/fstab state=absent regexp='swap'
+
+
+# link jna.jar 
+- name: link jna.jar
+  file:
+    src: "/usr/share/java/jna.jar"
+    dest: "{{ (CASSANDRA_HOME + '/lib/jna.jar') | replace('//','/') }}"
+    state: link

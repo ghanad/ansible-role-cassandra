@@ -1,0 +1,27 @@
+---
+# find java file name in local machine
+- name: find C* name in /opt/ directory
+  local_action:
+    module: find
+    paths: "{{ CASSANDRA_SRC_FILE_PATH }}"
+    patterns: 'apache-cassandra-*.tar.gz'
+  register: CASSANDRA_FILE_PATH_TMP
+  run_once: true
+
+- name: set fact C* source file
+  set_fact:
+    CASSANDRA_TAR_FILE_PATH: "{{ CASSANDRA_FILE_PATH_TMP.files.0.path }}"
+
+
+# unarchive
+- name:  unarchive cassandra on host 
+  unarchive: 
+    src: "{{ CASSANDRA_TAR_FILE_PATH }}"
+    dest: "{{ CASSANDRA_DEST_DIR }}"
+    list_files: yes
+  register: CASSANDRA_DIR_NAME_TMP
+
+
+- name: set fact C* dir name
+  set_fact:
+    CASSANDRA_HOME: "{{ (CASSANDRA_DEST_DIR + '/' + CASSANDRA_DIR_NAME_TMP.files[0] ) | replace('bin/','') | replace('//','/') }}"

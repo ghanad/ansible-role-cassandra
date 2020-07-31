@@ -1,0 +1,16 @@
+[Unit]
+Description=The Cassandra
+After=network.target
+
+[Service]
+Type=idle
+PIDFile=/var/run/cassandra.pid
+ExecStart={{ (CASSANDRA_HOME + '/bin/cassandra') | replace("//","/") }} -R -p /var/run/cassandra.pid
+LimitNOFILE=100000
+LimitNPROC=100000
+LimitMEMLOCK=infinity
+TimeoutStartSec=120
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

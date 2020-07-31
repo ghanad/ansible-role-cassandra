@@ -1,0 +1,4 @@
+ALTER KEYSPACE system_auth WITH replication = {'class': 'NetworkTopologyStrategy', '{{DC_NAME}}':{{SYSTEM_KEYSPACSE_REPLICA}}};
+ALTER KEYSPACE system_traces WITH replication = {'class': 'NetworkTopologyStrategy', '{{DC_NAME}}':{{SYSTEM_KEYSPACSE_REPLICA}}};
+ALTER KEYSPACE system_distributed WITH replication = {'class': 'NetworkTopologyStrategy', '{{DC_NAME}}':{{SYSTEM_KEYSPACSE_REPLICA}}};
+CREATE KEYSPACE {{ KEYSPACE_NAME }} WITH replication = {'class': 'NetworkTopologyStrategy', '{{DC_NAME}}':{{ KEYSPACE_REPLICA }}} ;

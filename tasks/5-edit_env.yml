@@ -1,0 +1,12 @@
+---
+- name: add {{ CASSANDRA_DIR_NAME }} to /etc/environmet
+  replace:
+    path: /etc/environment
+    regexp: 'PATH=(["])((?!.*cassandra).*)(["])'
+    replace: 'PATH=\1\2:{{ (CASSANDRA_HOME + "/bin") | replace("//","/") }}:\3'
+
+- name: remove "::" from /etc/environmet
+  replace:
+    path: /etc/environment
+    regexp: '::'
+    replace: ":"

@@ -1,0 +1,9 @@
+---
+- include: 1-install_packages.yml
+- include: 2-copy_and_unarchive_cassandra.yml
+- include: 3-os_changes.yml
+- include: 4-config_cassandra.yml
+- include: 5-edit_env.yml
+- include: 6-cassandra_service.yml
+- include: 7-start_node.yml
+- include: 8-cql_command.yml
