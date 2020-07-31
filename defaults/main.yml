@@ -22,6 +22,4 @@ HINTS_PATH: /mnt/cassandra/hints
 SAVED_CACHES_PATH: /mnt/cassandra/saved_caches
 
 
-
-SYSTEM_KEYSPACSE_REPLICA: 3
 KEYSPACE_REPLICA: 2
