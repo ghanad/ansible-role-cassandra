@@ -29,3 +29,6 @@ Example Playbook
       192.168.1.1 rack=rack1
       192.168.1.2 rack=rack2
       192.168.1.3 rack=rack3
+      
+      
+peygir issue: 10
