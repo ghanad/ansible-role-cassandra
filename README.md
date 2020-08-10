@@ -21,6 +21,7 @@ Example Playbook
 ----------------
 
     - hosts: servers
+      serial: 1
       roles:
          - cassandra
 
@@ -30,5 +31,6 @@ Example Playbook
       192.168.1.2 rack=rack2
       192.168.1.3 rack=rack3
       
-      
+**Note:** run this role in serial 
+
 peygir issue: 10
